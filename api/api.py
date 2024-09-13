@@ -72,10 +72,15 @@ def find_similar_image():
     
     features_dict = load_saved_features()
     
-    if not os.path.exists(query_image_path):
+    # Save the uploaded image to a temporary location
+    temp_image_path = '/tmp/query_image.png'
+    with open(temp_image_path, 'wb') as f:
+        f.write(request.files['image'].read())
+    
+    if not os.path.exists(temp_image_path):
         return jsonify({"error": "Query image not found"}), 404
     
-    most_similar_image_path, similarity = find_most_similar_image(query_image_path, features_dict)
+    most_similar_image_path, similarity = find_most_similar_image(temp_image_path, features_dict)
     
     if most_similar_image_path:
         return jsonify({
