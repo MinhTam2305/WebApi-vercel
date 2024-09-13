@@ -8,7 +8,7 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/find_similar",
       "dest": "api/api.py"
     }
   ]
