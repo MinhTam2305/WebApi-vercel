@@ -36,7 +36,7 @@ def extract_features(img_path):
 
 # Function to load saved features
 def load_saved_features():
-    features_path = 'features.pkl'
+    features_path = '/tmp/features.pkl'
     # Check if the file doesn't exist, download it
     if not os.path.exists(features_path):
         download_file_from_firebase(features_path)
